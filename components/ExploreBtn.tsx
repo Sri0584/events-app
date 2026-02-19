@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import posthog from 'posthog-js';
 
 //@typescript-eslint/no-unused-expressions
 const ExploreBtn = () => {
@@ -9,7 +10,9 @@ const ExploreBtn = () => {
 				type='button'
 				id='explore-btn'
 				className='mt-7 mx-auto'
-				onClick={() => console.log('CLICK')}>
+				onClick={() => {
+					posthog.capture('explore_events_clicked');
+				}}>
 				<a href='#events'>
 					Explore Events
 					<Image
